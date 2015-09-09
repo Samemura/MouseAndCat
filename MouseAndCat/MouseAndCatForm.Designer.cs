@@ -1,4 +1,4 @@
-﻿namespace MouseBT_Tool
+﻿namespace MouseAndCat
 {
     partial class MouseAndCatForm
     {
@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MouseAndCatForm));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -36,6 +38,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -52,7 +55,7 @@
             this.textBox1.Size = new System.Drawing.Size(713, 461);
             this.textBox1.TabIndex = 0;
             this.textBox1.TabStop = false;
-            this.textBox1.Text = "0F  99 11 11 11 11 11 11 11 11 11 11 11 11 11 11 33 ";
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // button1
             // 
@@ -139,13 +142,13 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
-            // Form1
+            // MouseAndCatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 610);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
+            this.Name = "MouseAndCatForm";
             this.Text = "MicroMouse BT tool";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -171,6 +174,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.IO.Ports.SerialPort serialPort1;
 
 
     }

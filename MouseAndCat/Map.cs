@@ -2,40 +2,56 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MouseBT_Tool;
+using MouseAndCat;
 
-namespace MouseBT_Tool
+namespace MouseAndCat
 {
-    public enum wall    {        Unkown, None, Exist    }
+    public enum WallStatus { Unkown, None, Exist }
 
-    public class Position
+    public class Wall
     {
-        public wall northWall, eastWall, westWall, southWall;
-        public Position() 
-        {
-            northWall= new wall();
-            eastWall = new wall();
-            westWall = new wall();
-            southWall = new wall();
-        }
+        public byte data;
+        public WallStatus north
+        {
+            get { return getWallStatus(data, 0x01); }
+        }
+        public WallStatus east
+        {
+            get { return getWallStatus(data, 0x02); }
+        }
+        public WallStatus south
+        {
+            get { return getWallStatus(data, 0x04); }
+        }
+        public WallStatus west
+        {
+            get { return getWallStatus(data, 0x08); }
+        }
+
+        private WallStatus getWallStatus(byte data, byte mask)
+        {  
+            return ((data & mask)==mask) ? WallStatus.Exist : WallStatus.None;
+        }
     }
+
 
     public class Map
     {
-        private int posSizeX, posSizeY; 
-        public Position[,] pos;
+        public int mapSizeX
+        {
+            get { return wall.GetLength(0); }
+        }
+        public int mapSizeY
+        {
+            get { return wall.GetLength(1); }
+        }
+        public Wall[,] wall;
 
         public Map(int sizeX, int sizeY){
-            posSizeX = sizeX;
-            posSizeY = sizeY;
-            pos = new Position[sizeX, sizeY];
-            for (int x = 0; x < posSizeX; x ++ )
-            {
-                for (int y = 0; y < posSizeY; y++)
-                {
-                pos[x, y] = new Position();
-                }
-            }
+            wall = new Wall[sizeX, sizeY];
+            for (int x = 0; x < mapSizeX; x ++ )
+                for (int y = 0; y < mapSizeY; y++)
+                    wall[x, y] = new Wall();
 
         }
 

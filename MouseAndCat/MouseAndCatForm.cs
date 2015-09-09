@@ -7,24 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
-using MouseBT_Tool;
+using MouseAndCat;
 
-namespace MouseBT_Tool
+namespace MouseAndCat
 {
     public partial class MouseAndCatForm : Form
     {
         private SerialPort myPort;
-        private byte[,] myMap = new byte[16,16];
-        private Map m = new Map(16, 16);
+        private MouseAndCatController controller;
 
         public MouseAndCatForm()
         {
             InitializeComponent();
-
+            controller = new MouseAndCatController();
         }
 
         private void InitializeComPort(string PortName)
         {
+            // TODO, serial port to be used serial port form
             int BaudRate = 9600;
             Parity Parity = Parity.None;
             int DataBits = 8;
@@ -36,7 +36,7 @@ namespace MouseBT_Tool
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] temp;
+            // TODO, port reading to be another class
             //int rbyte = myPort.BytesToRead; 
             //byte[] buffer = new byte[rbyte];
             //int read = 0; 
@@ -47,17 +47,7 @@ namespace MouseBT_Tool
             //}
 
             //textBox1.AppendText(Encoding.ASCII.GetString(buffer).Replace("\r", "\r\n"));
-            temp = textBox1.Text.Split(' ');
-            int x_idx = int.Parse(temp[0], System.Globalization.NumberStyles.HexNumber);
-            for (int i = 0; i < 16; i++ )
-            {
-                myMap[x_idx, i] = byte.Parse(temp[i + 2], System.Globalization.NumberStyles.HexNumber);
-
-                m.pos[x_idx, i].northWall = ((myMap[0x0F, i] & 0x01) == 0x01) ? wall.Exist : wall.None;
-                m.pos[x_idx, i].eastWall = ((myMap[0x0F, i] & 0x02) == 0x02) ? wall.Exist : wall.None;
-                m.pos[x_idx, i].southWall = ((myMap[0x0F, i] & 0x04) == 0x04) ? wall.Exist : wall.None;
-                m.pos[x_idx, i].westWall = ((myMap[0x0F, i] & 0x08) == 0x08) ? wall.Exist : wall.None;
-            }
+            controller.setMapData(textBox1.Lines);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -69,19 +59,26 @@ namespace MouseBT_Tool
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            Pen boldPen = new Pen(Color.block, 3);
-            int x_offset = 10;
+            Pen boldPen = new Pen(Color.Black, 3);
+            int offsetX = 20;
+            int offsetY = 20;
 
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < controller.map.mapSizeX; i++)
             {
-                if (m.pos[0x0F, i].northWall == wall.Exist) g.DrawLine(boldPen, (x_offset*i), 10, (x_offset*(i+1)), 10);
-                if (m.pos[0x0F, i].eastWall == wall.Exist) g.DrawLine(boldPen, (x_offset * (i + 1)), 10, (x_offset * (i + 1)), 20);
-                if (m.pos[0x0F, i].southWall == wall.Exist) g.DrawLine(boldPen, (x_offset * i), 20, (x_offset * (i + 1)), 20);
-                if (m.pos[0x0F, i].westWall == wall.Exist) g.DrawLine(boldPen, (x_offset * i), 10, (x_offset * i), 20);
+                int y1 = (offsetY * (controller.map.mapSizeX - i - 1));
+                int y2 = y1 + offsetY;
+                for (int j = 0; j < controller.map.mapSizeY; j++)
+                {
+                    int x1 = offsetX * j;
+                    int x2 = x1 + offsetX;
+                    if (controller.map.wall[i, j].west == WallStatus.Exist) g.DrawLine(boldPen, x1, y1, x1, y2);
+                    if (controller.map.wall[i, j].north == WallStatus.Exist) g.DrawLine(boldPen, x1, y1, x2, y1);
+                    if (controller.map.wall[i, j].south == WallStatus.Exist) g.DrawLine(boldPen, x1, y2, x2, y2);
+                    if (controller.map.wall[i, j].east == WallStatus.Exist) g.DrawLine(boldPen, x2, y1, x2, y2);
+                }
             }
 
-            //boldPen.Dispose;
-            //g.Dispose;
+            boldPen.Dispose();
         }
 
     }

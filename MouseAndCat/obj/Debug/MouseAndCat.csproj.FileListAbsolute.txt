@@ -1,0 +1,8 @@
+C:\Users\MasakiMurano\Documents\Visual Studio 2008\Projects\MouseAndCat\MouseAndCat\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\MasakiMurano\Documents\Visual Studio 2008\Projects\MouseAndCat\MouseAndCat\obj\Debug\MouseAndCat.csproj.GenerateResource.Cache
+C:\Users\MasakiMurano\Documents\Visual Studio 2008\Projects\MouseAndCat\MouseAndCat\bin\Debug\MouseAndCat.exe
+C:\Users\MasakiMurano\Documents\Visual Studio 2008\Projects\MouseAndCat\MouseAndCat\bin\Debug\MouseAndCat.pdb
+C:\Users\MasakiMurano\Documents\Visual Studio 2008\Projects\MouseAndCat\MouseAndCat\obj\Debug\MouseAndCat.Properties.Resources.resources
+C:\Users\MasakiMurano\Documents\Visual Studio 2008\Projects\MouseAndCat\MouseAndCat\obj\Debug\MouseAndCat.exe
+C:\Users\MasakiMurano\Documents\Visual Studio 2008\Projects\MouseAndCat\MouseAndCat\obj\Debug\MouseAndCat.pdb
+C:\Users\MasakiMurano\Documents\Visual Studio 2008\Projects\MouseAndCat\MouseAndCat\obj\Debug\MouseAndCat.MouseAndCatForm.resources

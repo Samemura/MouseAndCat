@@ -117,4 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>0F  99 11 11 11 11 11 11 11 11 11 11 11 11 11 11 33 
+
+0E  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+0D  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+0C  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+0B  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+0A  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+09  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+08  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+07  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+06  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+05  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+04  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+03  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+02  88 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+01  C8 00 00 00 00 00 00 00 00 00 00 00 00 00 00 22 
+
+00  FE CC 44 44 44 44 44 44 44 44 44 44 44 44 44 66 
+</value>
+  </data>
+  <metadata name="serialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
